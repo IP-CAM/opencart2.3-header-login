@@ -1,0 +1,51 @@
+<modification>
+   <id>Header Login Panel OC2</id>
+   <version>1.0</version>
+   <vqmver>2.6.1</vqmver>
+   <author>Hynax Business Solutions</author>
+   <file name="catalog/view/theme/*/template/common/header.tpl">
+      <operation error="log">
+         <search position="before">
+            <![CDATA[</head>]]>
+         </search>
+         <add>
+            <![CDATA[
+               
+               <style type="text/css" >
+@media (max-width: 767px){
+	#hynax_sign_box{
+		display:none !important;
+	}
+}
+               </style>
+               
+               ]]>
+         </add>
+      </operation>
+      <operation error="log">
+         <search position="after">
+            <![CDATA[<?php echo $currency; ?>]]>
+         </search>
+         <add>
+            <![CDATA[<?php if (!$logged) { ?>
+				<div id="hynax_sign_box" class="pull-left">
+
+<div class="form-group"><form action="index.php?route=account/login" method="post" enctype="multipart/form-data">
+<div class="col-sm-5">
+<input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control">
+</div>
+<div class="col-sm-5">
+<input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
+</div>
+<div class="col-sm-2">
+<input type="submit" value="Login" class="btn btn-primary">
+</div></form>
+</div>
+
+				</div><?php } ?>
+               ]]>
+         </add>
+      </operation>
+   </file>
+
+</modification>
